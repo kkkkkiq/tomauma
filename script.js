@@ -49,10 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 
-    // Botão MARCAR
-    document.getElementById("marcar").addEventListener("click", function() {
-        mostrarTela("eba");
-    });
+
 
 
     // Formulário
@@ -96,7 +93,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
             console.error("Erro ao enviar:", erro);
 
-            alert("Erro ao salvar os dados.");
+    // Botão MARCAR
+    document.getElementById("marcar").addEventListener("click", function() {
+        mostrarTela("eba");
+    });
 
         }
 
