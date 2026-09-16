@@ -1,3 +1,4 @@
+console.log("funcionando")
 // Troca de telas
 function mostrarTela(id) {
 
