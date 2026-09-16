@@ -13,7 +13,7 @@ function mostrarTela(id) {
 
 // Primeira tela
 window.onload = function() {
-    mostrarTela("per");
+    mostrarTela("pe");
 };
 
 
