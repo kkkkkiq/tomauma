@@ -91,3 +91,39 @@ body{
 .campo input::placeholder {
     color: #999;
 }
+
+@media (max-width: 576px) {
+
+    .fundo {
+        width: 95%;
+        min-height: auto;
+        padding: 25px 15px;
+        margin: 20px auto;
+    }
+
+    .texto {
+        font-size: 28px;
+    }
+
+    .botoes {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .espaço {
+        margin-top: 20px;
+    }
+
+    .fundo img {
+        width: 200px;
+        height: 200px;
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    input {
+        width: 100%;
+        max-width: 300px;
+        box-sizing: border-box;
+    }
+}
