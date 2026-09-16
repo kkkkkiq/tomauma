@@ -92,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function() {
 // ==========================
 // ESCONDE O BOTÃO NÃO
 // ==========================
-
 function sumir() {
 
     document.getElementById("nao").style.display = "none";
