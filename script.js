@@ -37,13 +37,19 @@ document.addEventListener("DOMContentLoaded", function() {
     mostrarTela("per");
 
 
-    // Botão NÃO
+    // ==========================
+    // BOTÃO NÃO
+    // ==========================
+
     document.getElementById("nao").addEventListener("click", function() {
         sumir();
     });
 
 
-    // Botão SIM
+    // ==========================
+    // BOTÃO SIM
+    // ==========================
+
     document.getElementById("sim").addEventListener("click", function() {
         mostrarTela("dia");
     });
@@ -52,39 +58,60 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-    // Formulário
+    // ==========================
+    // FORMULÁRIO
+    // ==========================
+
     const formulario = document.getElementById("formulario");
 
     formulario.addEventListener("submit", async function(event) {
 
         event.preventDefault();
 
+
+        // Pega os valores
         const nome = document.getElementById("name").value.trim();
         const local = document.getElementById("local").value.trim();
         const data = document.getElementById("data").value;
 
 
-        // Cria o ID personalizado
-        const id = `${nome}_${data}`;
+        // ==========================
+        // CRIA O ID
+        // ==========================
 
+        const id = `${nome}_${data}`;
 
         console.log("ID criado:", id);
 
 
         try {
 
-            await setDoc(doc(db, "mensagens", id), {
+            // ==========================
+            // SALVA NO FIRESTORE
+            // ==========================
 
-                nome: nome,
+            await setDoc(
+                doc(db, "mensagens", id),
+                {
+                    nome: nome,
 
-                encontro: {
-                    local: local,
-                    data: data
+                    encontro: {
+                        local: local,
+                        data: data
+                    }
                 }
+            );
 
-            });
 
-            alert("Mensagem enviada!");
+            console.log("Documento salvo com ID:", id);
+
+    // ==========================
+    // BOTÃO MARCAR
+    // ==========================
+
+    document.getElementById("marcar").addEventListener("click", function() {
+        mostrarTela("eba");
+    });
 
             formulario.reset();
 
@@ -92,11 +119,6 @@ document.addEventListener("DOMContentLoaded", function() {
         } catch (erro) {
 
             console.error("Erro ao enviar:", erro);
-
-    // Botão MARCAR
-    document.getElementById("marcar").addEventListener("click", function() {
-        mostrarTela("eba");
-    });
 
         }
 
