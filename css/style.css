@@ -3,11 +3,14 @@ body{
             display: block;
             background-repeat: no-repeat;
             background-size: cover;
-
+            margin: 0;
+            overflow-x: hidden;
         }
 
         .telasop{
             display: none;
+            min-height: 100vh;
+            height: auto;
         }
 
 .fundo {
