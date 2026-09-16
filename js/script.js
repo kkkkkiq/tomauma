@@ -12,9 +12,9 @@ function mostrarTela(id) {
 
 
 // Primeira tela
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function() {
     mostrarTela("per");
-};
+});
 
 
 // Botão NÃO
