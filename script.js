@@ -5,8 +5,8 @@
 import { db } from "./firebase.js";
 
 import {
-    collection,
-    addDoc
+    doc,
+    setDoc
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
@@ -61,18 +61,22 @@ document.addEventListener("DOMContentLoaded", function() {
         const data = document.getElementById("data").value;
 
 
+        // Cria o ID personalizado
+        const id = `${nome}_${data}`;
+
+
         try {
 
-                await addDoc(collection(db, "mensagens"), {
-                
-                    nome: nome,
-                
-                    encontro: {
-                        local: local,
-                        data: data
-                    }
-                
-                    });
+            await setDoc(doc(db, "mensagens", id), {
+
+                nome: nome,
+
+                encontro: {
+                    local: local,
+                    data: data
+                }
+
+            });
 
             alert("Mensagem enviada!");
 
@@ -95,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // ==========================
 // ESCONDE O BOTÃO NÃO
 // ==========================
+
 function sumir() {
 
     document.getElementById("nao").style.display = "none";
