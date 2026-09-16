@@ -1,3 +1,4 @@
+console.log("SCRIPT CARREGADO!");
 // Troca de telas
 function mostrarTela(id) {
 
