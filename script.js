@@ -1,132 +1,52 @@
-// ==========================
-// IMPORTS
-// ==========================
+formulario.addEventListener("submit", async function(event) {
 
-import { db } from "./firebase.js";
+    event.preventDefault();
 
-import {
-    doc,
-    setDoc
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+    console.log("1 - Formulário enviado");
 
 
-// ==========================
-// TROCA DE TELAS
-// ==========================
+    const nome = document.getElementById("name").value.trim();
+    const local = document.getElementById("local").value.trim();
+    const data = document.getElementById("data").value;
 
-function mostrarTela(id) {
-
-    const telas = document.querySelectorAll(".telasop");
-
-    telas.forEach(function(tela) {
-        tela.style.display = "none";
-    });
-
-    document.getElementById(id).style.display = "flex";
-}
+    console.log("2 - Dados:", nome, local, data);
 
 
-// ==========================
-// QUANDO A PÁGINA CARREGAR
-// ==========================
+    const id = `${nome}_${data}`;
 
-document.addEventListener("DOMContentLoaded", function() {
-
-    console.log("JavaScript funcionando!");
-
-    mostrarTela("per");
+    console.log("3 - ID:", id);
 
 
-    // ==========================
-    // BOTÃO NÃO
-    // ==========================
+    try {
 
-    document.getElementById("nao").addEventListener("click", function() {
-        sumir();
-    });
+        console.log("4 - Tentando salvar no Firebase...");
 
+        await setDoc(
+            doc(db, "mensagens", id),
+            {
+                nome: nome,
 
-    // ==========================
-    // BOTÃO SIM
-    // ==========================
-
-    document.getElementById("sim").addEventListener("click", function() {
-        mostrarTela("dia");
-    });
-
-
-
-
-
-    // ==========================
-    // FORMULÁRIO
-    // ==========================
-
-    const formulario = document.getElementById("formulario");
-
-    formulario.addEventListener("submit", async function(event) {
-
-        event.preventDefault();
-
-
-        // Pega os valores
-        const nome = document.getElementById("name").value.trim();
-        const local = document.getElementById("local").value.trim();
-        const data = document.getElementById("data").value;
-
-
-        // ==========================
-        // CRIA O ID
-        // ==========================
-
-        const id = `${nome}_${data}`;
-
-        console.log("ID criado:", id);
-
-
-        try {
-
-            // ==========================
-            // SALVA NO FIRESTORE
-            // ==========================
-
-            await setDoc(
-                doc(db, "mensagens", id),
-                {
-                    nome: nome,
-
-                    encontro: {
-                        local: local,
-                        data: data
-                    }
+                encontro: {
+                    local: local,
+                    data: data
                 }
-            );
+            }
+        );
 
+        console.log("5 - SALVOU NO FIREBASE!");
 
-            console.log("Documento salvo com ID:", id);
+        formulario.reset();
 
-            formulario.reset();
+        console.log("6 - Indo para tela eba...");
 
-            mostrarTela("eba");
+        mostrarTela("eba");
 
+        console.log("7 - Tela eba mostrada!");
 
-        } catch (erro) {
+    } catch (erro) {
 
-            console.error("Erro ao enviar:", erro);
+        console.error("ERRO:", erro);
 
-        }
-
-    });
+    }
 
 });
-
-
-// ==========================
-// ESCONDE O BOTÃO NÃO
-// ==========================
-
-function sumir() {
-
-    document.getElementById("nao").style.display = "none";
-
-}
