@@ -43,4 +43,58 @@ import { app } from "./firebase.js";
 console.log("Firebase conectado!");
 console.log(app);
 
+import { db } from "./firebase.js";
+
+import {
+    collection,
+    addDoc
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+const formulario = document.getElementById("formulario");
+
+
+formulario.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const nome = document.getElementById("name").value;
+    const local = document.getElementById("local").value;
+    const data = document.getElementById("data").value;
+
+
+try {
+
+    await addDoc(collection(db, "mensagens"), {
+
+        nome: nome,
+        local: local,
+        data: data
+
+    });
+
+    alert("Dados salvos com sucesso!");
+
+} catch (erro) {
+
+    console.error("Erro ao salvar:", erro);
+
+    alert("Erro ao salvar os dados.");
+
+}
+
+        alert("Mensagem enviada!");
+
+        formulario.reset();
+
+    } catch (erro) {
+
+        console.error("Erro ao enviar:", erro);
+
+        alert("Erro ao enviar a mensagem.");
+
+    }
+
+});
+
 
