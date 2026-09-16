@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         // Cria o ID personalizado
-        const id = `${nome}_${data}`;
+        const id = `${name}_${data}`;
 
 
         console.log("ID criado:", id);
