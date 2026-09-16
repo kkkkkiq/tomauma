@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             await setDoc(doc(db, "mensagens", id), {
 
-                nome: nome,
+                nome: name,
 
                 encontro: {
                     local: local,
