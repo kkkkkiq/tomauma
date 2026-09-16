@@ -1,4 +1,3 @@
-console.log("SCRIPT CARREGADO!");
 // Troca de telas
 function mostrarTela(id) {
 
@@ -12,17 +11,27 @@ function mostrarTela(id) {
 }
 
 
-// Primeira tela
+// Quando a página carregar
 document.addEventListener("DOMContentLoaded", function() {
+
     mostrarTela("per");
+
+    // Botão NÃO
+    document.getElementById("nao").addEventListener("click", function() {
+        sumir();
+    });
+
+    // Botão SIM
+    document.getElementById("sim").addEventListener("click", function() {
+        mostrarTela("dia");
+    });
+
 });
 
 
-// Botão NÃO
+// Esconde o botão NÃO
 function sumir() {
 
     document.getElementById("nao").style.display = "none";
 
 }
-
-
