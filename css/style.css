@@ -17,10 +17,19 @@ body{
     width: 100%;
     max-width: 600px;
     min-height: 600px;
-    height: auto;
 
-    padding: 30px;
+    padding: 40px 30px;
+
+    background-color: rgba(50, 112, 123, 0.8);
+
+    margin: 0 auto;
+
     box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
         .botoes {
@@ -99,34 +108,27 @@ body{
 
     .fundo {
         width: 95%;
-        min-height: auto;
+        min-height: 500px;
         padding: 25px 15px;
-        margin: 20px auto;
-    }
-
-    .texto {
-        font-size: 28px;
-    }
-
-    .botoes {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
-
-    .espaço {
-        margin-top: 20px;
     }
 
     .fundo img {
-        width: 200px;
-        height: 200px;
-        max-width: 100%;
+        width: 180px;
+        height: 180px;
         object-fit: cover;
+    }
+
+    .texto {
+        font-size: 26px;
+    }
+
+    .botoes {
+        padding: 10px 18px;
+        font-size: 15px;
     }
 
     input {
         width: 100%;
-        max-width: 300px;
-        box-sizing: border-box;
+        max-width: 280px;
     }
 }
