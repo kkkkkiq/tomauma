@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         // Cria o ID personalizado
-        const id = `${name}_${data}`;
+        const id = `${nome}_${data}`;
 
 
         console.log("ID criado:", id);
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             await setDoc(doc(db, "mensagens", id), {
 
-                nome: name,
+                nome: nome,
 
                 encontro: {
                     local: local,
