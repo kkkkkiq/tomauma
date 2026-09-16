@@ -63,13 +63,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
         try {
 
-            await addDoc(collection(db, "mensagens"), {
-
-                nome: nome,
-                local: local,
-                data: data
-
-            });
+                await addDoc(collection(db, "mensagens"), {
+                
+                    nome: nome,
+                
+                    encontro: {
+                        local: local,
+                        data: data
+                    }
+                
+                    });
 
             alert("Mensagem enviada!");
 
