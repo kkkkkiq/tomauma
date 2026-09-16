@@ -105,15 +105,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
             console.log("Documento salvo com ID:", id);
 
-    // ==========================
-    // BOTÃO MARCAR
-    // ==========================
-
-    document.getElementById("marcar").addEventListener("click", function() {
-        mostrarTela("eba");
-    });
-
             formulario.reset();
+
+            mostrarTela("eba");
 
 
         } catch (erro) {
