@@ -1,5 +1,19 @@
-console.log("funcionando")
-// Troca de telas
+// ==========================
+// IMPORTS
+// ==========================
+
+import { db } from "./firebase.js";
+
+import {
+    collection,
+    addDoc
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+// ==========================
+// TROCA DE TELAS
+// ==========================
+
 function mostrarTela(id) {
 
     const telas = document.querySelectorAll(".telasop");
@@ -12,79 +26,75 @@ function mostrarTela(id) {
 }
 
 
-// Quando a página carregar
+// ==========================
+// QUANDO A PÁGINA CARREGAR
+// ==========================
+
 document.addEventListener("DOMContentLoaded", function() {
 
+    console.log("JavaScript funcionando!");
+
     mostrarTela("per");
+
 
     // Botão NÃO
     document.getElementById("nao").addEventListener("click", function() {
         sumir();
     });
 
+
     // Botão SIM
     document.getElementById("sim").addEventListener("click", function() {
         mostrarTela("dia");
     });
 
+
+    // Formulário
+    const formulario = document.getElementById("formulario");
+
+    formulario.addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const nome = document.getElementById("name").value;
+        const local = document.getElementById("local").value;
+        const data = document.getElementById("data").value;
+
+
+        try {
+
+            await addDoc(collection(db, "mensagens"), {
+
+                nome: nome,
+                local: local,
+                data: data
+
+            });
+
+            alert("Mensagem enviada!");
+
+            formulario.reset();
+
+
+        } catch (erro) {
+
+            console.error("Erro ao enviar:", erro);
+
+            alert("Erro ao enviar a mensagem.");
+
+        }
+
+    });
+
 });
 
 
-// Esconde o botão NÃO
+// ==========================
+// ESCONDE O BOTÃO NÃO
+// ==========================
+
 function sumir() {
 
     document.getElementById("nao").style.display = "none";
 
 }
-
-import { app } from "./firebase.js";
-
-
-console.log("Firebase conectado!");
-console.log(app);
-
-import { db } from "./firebase.js";
-
-import {
-    collection,
-    addDoc
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
-
-const formulario = document.getElementById("formulario");
-
-
-formulario.addEventListener("submit", async function(event) {
-
-    event.preventDefault();
-
-    const nome = document.getElementById("name").value;
-    const local = document.getElementById("local").value;
-    const data = document.getElementById("data").value;
-
-
-    try {
-
-        await addDoc(collection(db, "mensagens"), {
-
-            nome: nome,
-            local: local,
-            data: data
-
-        });
-
-        alert("Mensagem enviada!");
-
-        formulario.reset();
-
-
-    } catch (erro) {
-
-        console.error("Erro ao enviar:", erro);
-
-        alert("Erro ao enviar a mensagem.");
-
-    }
-
-});
-
