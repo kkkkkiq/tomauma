@@ -10,17 +10,15 @@ body{
             display: none;
         }
 
-        .fundo {
-            background-color: rgba(12, 22, 24, 0.8);
-            width: 600px;
-            height: 600px;
-            border-radius: 20%;
+.fundo {
+    width: 100%;
+    max-width: 600px;
+    min-height: 600px;
+    height: auto;
 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+    padding: 30px;
+    box-sizing: border-box;
+}
 
         .botoes {
     display: inline-block;
