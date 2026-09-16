@@ -63,29 +63,20 @@ formulario.addEventListener("submit", async function(event) {
     const data = document.getElementById("data").value;
 
 
-try {
+    try {
 
-    await addDoc(collection(db, "mensagens"), {
+        await addDoc(collection(db, "mensagens"), {
 
-        nome: nome,
-        local: local,
-        data: data
+            nome: nome,
+            local: local,
+            data: data
 
-    });
-
-    alert("Dados salvos com sucesso!");
-
-} catch (erro) {
-
-    console.error("Erro ao salvar:", erro);
-
-    alert("Erro ao salvar os dados.");
-
-}
+        });
 
         alert("Mensagem enviada!");
 
         formulario.reset();
+
 
     } catch (erro) {
 
@@ -96,5 +87,4 @@ try {
     }
 
 });
-
 
