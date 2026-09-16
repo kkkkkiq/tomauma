@@ -49,6 +49,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 
+    // Botão MARCAR
+    document.getElementById("marcar").addEventListener("click", function() {
+        mostrarTela("eba");
+    });
+
+
     // Formulário
     const formulario = document.getElementById("formulario");
 
@@ -56,13 +62,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
         event.preventDefault();
 
-        const nome = document.getElementById("name").value;
-        const local = document.getElementById("local").value;
+        const nome = document.getElementById("name").value.trim();
+        const local = document.getElementById("local").value.trim();
         const data = document.getElementById("data").value;
 
 
         // Cria o ID personalizado
         const id = `${nome}_${data}`;
+
+
+        console.log("ID criado:", id);
 
 
         try {
@@ -87,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             console.error("Erro ao enviar:", erro);
 
-            alert("Erro ao enviar a mensagem.");
+            alert("Erro ao salvar os dados.");
 
         }
 
