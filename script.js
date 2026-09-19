@@ -103,9 +103,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const data = document.getElementById("data").value;
 
 
-        console.log("Nome:", nome);
-        console.log("Local:", local);
-        console.log("Data:", data);
+        console.log(nome);
+        console.log( local);
+        console.log(data);
 
 
         // ==========================
