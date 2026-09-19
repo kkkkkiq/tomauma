@@ -129,8 +129,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     nome: nome,
 
                     encontro: {
-                        local: local,
-                        data: data
+                        local,
+                        data
                     }
                 }
             );
